@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <title>Mera Unlimited AI Studio</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #121212; color: white; text-align: center; padding: 20px; }
+        input { width: 60%; padding: 12px; margin: 10px; border-radius: 5px; border: none; }
+        button { padding: 12px 25px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #videoResult { margin-top: 20px; max-width: 100%; height: auto; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>🎬 Mera Personal Unlimited AI Video Generator</h1>
+    <p>بغیر کسی لمٹ کے جتنی چاہیں ویڈیوز بنائیں</p>
+
+    <input type="text" id="prompt" placeholder="Video ki tafseel likhein (e.g. A cat walking in space, 4k)...">
+    <br>
+    <button onclick="generateVideo()">Video Banayein</button>
+
+    <div id="output" style="margin-top:20px;"></div>
+
+    <script>
+        function generateVideo() {
+            let promptText = document.getElementById("prompt").value;
+            let outputDiv = document.getElementById("output");
+            
+            if(!promptText) {
+                alert("Pehle prompt likhein!");
+                return;
+            }
+
+            outputDiv.innerHTML = "<p>Video ban rahi hai, thora intezar karein...</p>";
+
+            // Pollinations Open-Source Unlimited Engine URL
+            let videoUrl = "https://image.pollinations.ai/prompt/" + encodeURIComponent(promptText) + "?model=flux&nologo=true";
+
+            // Render output
+            outputDiv.innerHTML = `<img src="${videoUrl}" id="videoResult" alt="Generated Content"><br><br>
+                                   <a href="${videoUrl}" download="ai_video.jpg" style="color:#00ffcc;">Download Karein</a>`;
+        }
+    </script>
+</body>
+</html>
